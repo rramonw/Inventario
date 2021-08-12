@@ -13,10 +13,17 @@
     <div class="mb-3">
         <label for="" class="form-label">Nombre</label>
         <input id="nombre" name="nombre" type="text" class="form-control" tabindex="1" value="{{$categoria->nombre}}">
+         @error('nombre')
+        <div class="alert alert-danger">
+        
+        <small>*{{$message}}</small>
+        
+        </div>
+        @enderror
     </div>
     <div class="mb-3">
         <label for="" class="form-label">Descripcion</label>
-        <input id="descripcion" name="pc" type="text" class="form-control" tabindex="2" value="{{$categoria->descripcion}}">
+        <input id="descripcion" name="descripcion" type="text" class="form-control" tabindex="2" value="{{$categoria->descripcion}}">
     </div>
     <div class="mb-3">
         <label for="" class="form-label">Condicion</label>

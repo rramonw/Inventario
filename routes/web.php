@@ -24,6 +24,10 @@ Route::resource('articulos','App\Http\Controllers\ArticuloController');
 Route::resource('categorias','App\Http\Controllers\CategoriaController');
 Route::resource('sectors','App\Http\Controllers\SectorController');
 Route::resource('sedes','App\Http\Controllers\SedeController');
+Route::resource('users','App\Http\Controllers\UserController');
+Route::resource('marcas','App\Http\Controllers\MarcaController');
+Route::resource('roles','App\Http\Controllers\RoleController');
+
 
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {

@@ -15,8 +15,10 @@ class CreateSedesTable extends Migration
     {
         Schema::create('sedes', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('nombre', 50);
+            $table->string('nombre', 50)->unique();
             $table->string('descripcion', 256)->nullable();
+            $table->unsignedBigInteger('created_by')->nullable();
+            $table->unsignedBigInteger('updated_by')->nullable();
             $table->boolean('condicion')->default(1);
             $table->timestamps();
         });

@@ -42,10 +42,11 @@ class Sede3Controller extends Controller
         $sede3s = new Sede3();
         
         $sede3s->ip = $request->get('ip');
-        $sede3s->pc = $request->get('pc');
+        $sede3s->equipo = $request->get('equipo');
         $sede3s->num_serie = $request->get('num_serie');
         $sede3s->sector = $request->get('sector');
         $sede3s->usuario = $request->get('usuario');
+        $sede3s->puesto = $request->get('puesto');
         $sede3s->disponible = $request->get('disponible');
 
         $sede3s->save();
@@ -88,10 +89,11 @@ class Sede3Controller extends Controller
         $sede3 = Sede3::find($id);
 
         $sede3->ip = $request->get('ip');
-        $sede3->pc = $request->get('pc');
+        $sede3s->equipo = $request->get('equipo');
         $sede3->num_serie = $request->get('num_serie');
         $sede3->sector = $request->get('sector');
         $sede3->usuario = $request->get('usuario');
+        $sede3s->puesto = $request->get('puesto');
         $sede3->disponible = $request->get('disponible');
 
         $sede3->save();

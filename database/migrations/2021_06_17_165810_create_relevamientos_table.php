@@ -17,10 +17,11 @@ class CreateRelevamientosTable extends Migration
             
             $table->id();
             $table->string('ip',12)->unique();
-            $table->string('pc', 10);
+            $table->string('equipo', 10);
             $table->string('num_serie',20);
             $table->string('sector', 30);
             $table->string('usuario', 40);
+            $table->string('puesto', 40);
             $table->string('disponible', 10);
             $table->timestamps();
         });

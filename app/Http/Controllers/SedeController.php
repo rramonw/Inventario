@@ -9,7 +9,15 @@ class SedeController extends Controller
 {
     public function __construct(){
         $this->middleware('auth');
+        $this->middleware('can:sedes.index')->only('index');
+        $this->middleware('can:sedes.create')->only('create', 'store');
+        $this->middleware('can:sedes.edit')->only('edit', 'update');
+        $this->middleware('can:sedes.destroy')->only('destroy');
     }
+
+    //public function __construct(){
+        //$this->middleware('auth');
+    //}
     /**
      * Display a listing of the resource.
      *
@@ -39,6 +47,14 @@ class SedeController extends Controller
      */
     public function store(Request $request)
     {
+        
+        $request->validate([
+            
+            'nombre'=>'required|unique:sedes',
+            
+
+        ]);
+
         $sedes = new Sede();
         
         $sedes->nombre = $request->get('nombre');
@@ -82,6 +98,13 @@ class SedeController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $request->validate([
+            
+            'nombre'=>'required:sedes',
+            
+
+        ]);
+        
         $sede = Sede::find($id);
 
         $sede->nombre = $request->get('nombre');

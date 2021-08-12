@@ -9,7 +9,15 @@ class SectorController extends Controller
 {
     public function __construct(){
         $this->middleware('auth');
+        $this->middleware('can:sectors.index')->only('index');
+        $this->middleware('can:sectors.create')->only('create', 'store');
+        $this->middleware('can:sectors.edit')->only('edit', 'update');
+        $this->middleware('can:sectors.destroy')->only('destroy');
     }
+
+    //public function __construct(){
+        //$this->middleware('auth');
+    //}
     /**
      * Display a listing of the resource.
      *
@@ -39,6 +47,14 @@ class SectorController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            
+            'nombre'=>'required|unique:sectors',
+            
+
+        ]);
+
+
         $sectors = new Sector();
         
         $sectors->nombre = $request->get('nombre');
@@ -82,6 +98,13 @@ class SectorController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $request->validate([
+            
+            'nombre'=>'required:sectors',
+            
+
+        ]);
+        
         $sector = Sector::find($id);
 
         $sector->nombre = $request->get('nombre');

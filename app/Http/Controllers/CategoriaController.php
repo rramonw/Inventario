@@ -9,7 +9,15 @@ class CategoriaController extends Controller
 {
     public function __construct(){
         $this->middleware('auth');
+        $this->middleware('can:categorias.index')->only('index');
+        $this->middleware('can:categorias.create')->only('create', 'store');
+        $this->middleware('can:categorias.edit')->only('edit', 'update');
+        $this->middleware('can:categorias.destroy')->only('destroy');
     }
+
+    //public function __construct(){
+        //$this->middleware('auth');
+   //}
     /**
      * Display a listing of the resource.
      *
@@ -39,6 +47,13 @@ class CategoriaController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            
+            'nombre'=>'required|unique:categorias',
+            
+
+        ]);
+
         $categorias = new Categoria();
         
         $categorias->nombre = $request->get('nombre');
@@ -82,6 +97,13 @@ class CategoriaController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $request->validate([
+            
+            'nombre'=>'required:categorias',
+            
+
+        ]);
+
         $categoria = Categoria::find($id);
 
         $categoria->nombre = $request->get('nombre');

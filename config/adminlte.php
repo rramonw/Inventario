@@ -46,7 +46,7 @@ return [
     */
 
     'logo' => '<b>DGHC</b>',
-    'logo_img' => 'vendor/adminlte/dist/img/AdminLTELogo.png',
+    'logo_img' => 'vendor/adminlte/dist/img/logo2.png',
     'logo_img_class' => 'brand-image img-circle elevation-3',
     'logo_img_xl' => null,
     'logo_img_xl_class' => 'brand-image-xs',
@@ -188,11 +188,11 @@ return [
     */
 
     'use_route_url' => false,
-    'dashboard_url' => 'home',
+    'dashboard_url' => 'articulos',
     'logout_url' => 'logout',
     'login_url' => 'login',
-    'register_url' => 'register',
-    'password_reset_url' => 'password/reset',
+    'register_url' => '',
+    'password_reset_url' => '',
     'password_email_url' => 'password/email',
     'profile_url' => false,
 
@@ -252,50 +252,62 @@ return [
             'icon'        => 'far fa-fw fa-file',
             'label'       => 'DGHC',
             'label_color' => 'success',
+            'can'         => 'relevamientos.index',
             'submenu' => [
                 [
                     'text' => 'Sede Roca',
+                    'icon_color' => 'red',
                     'url'  => 'relevamientos',
                 ],
                 [
                     'text' => 'Sede 3',
+                    'icon_color' => 'red',
                     'url'  => 'sede3s',
                     
                 ],
                 [
                     'text' => 'Sede 4',
+                    'icon_color' => 'red',
                     'url'  => '#',
                 ],
                 [
                     'text' => 'Sede 5',
+                    'icon_color' => 'red',
                     'url'  => '#',
                 ],
                 [
                     'text' => 'Sede 12',
+                    'icon_color' => 'red',
                     'url'  => '#',
                 ],
                 [
                     'text' => 'Sede 13',
+                    'icon_color' => 'red',
                     'url'  => '#',
                 ],
                 [
                     'text' => 'Sede 14',
+                    'icon_color' => 'red',
                     'url'  => '#',
                 ],
                 [
                     'text' => 'Sede 15',
+                    'icon_color' => 'red',
                     'url'  => '#',
                 ],
                 [
                     'text' => 'Aca Libertador',
+                    'icon_color' => 'red',
                     'url'  => '#',
                 ],
                 [
                     'text' => 'Aca pista',
+                    'icon_color' => 'red',
                     'url'  => '#',
                 ],
                 [
                     'text' => 'Parque Extremo',
+                    'icon_color' => 'red',
                     'url'  => '#',
                 ],
             
@@ -308,23 +320,27 @@ return [
         [
             'text'        => 'Inventario',
             'url'         => 'inventarios',
-            'icon'        => 'far fa-fw fa-file',
+            'icon'        => 'fas fa-archive',
             'label'       => 'DGHC',
             'label_color' => 'success',
             'submenu' => [
                 [
                     'text' => 'Articulo',
                     'icon' => 'fas fa-align-justify',
+                    'icon_color' => 'cyan',
                     'url'  => '#',
                     'submenu' => [
                        [
                             'text' => 'Crear Articulo',
                             'icon' => 'fas fa-caret-right',
+                            'icon_color' => 'red',
                             'url'  => 'articulos/create',
+                            'can'  => 'articulos.create',
                        ],
                        [
                             'text' => 'Listado de Articulos',
                             'icon' => 'fas fa-caret-right',
+                            'icon_color' => 'red',
                             'url'  => 'articulos',
                     
                        ],
@@ -333,16 +349,20 @@ return [
                 [
                     'text' => 'Categoria',
                     'icon' => 'fas fa-align-justify',
+                    'icon_color' => 'cyan',
                     'url'  => '#',
                     'submenu' => [
                        [
                             'text' => 'Crear Categoria',
                             'icon' => 'fas fa-caret-right',
+                            'icon_color' => 'red',
                             'url'  => 'categorias/create',
+                            'can'  => 'categorias.create',
                        ],
                        [
                             'text' => 'Listado de Categorias',
                             'icon' => 'fas fa-caret-right',
+                            'icon_color' => 'red',
                             'url'  => 'categorias',
                     
                        ],
@@ -352,16 +372,20 @@ return [
                 [
                     'text' => 'Sector',
                     'icon' => 'fas fa-align-justify',
+                    'icon_color' => 'cyan',
                     'url'  => '#',
                     'submenu' => [
                        [
                             'text' => 'Crear Sector',
                             'icon' => 'fas fa-caret-right',
+                            'icon_color' => 'red',
                             'url'  => 'sectors/create',
+                            'can'  => 'sectors.create',
                        ],
                        [
                             'text' => 'Listado de Sectores',
                             'icon' => 'fas fa-caret-right',
+                            'icon_color' => 'red',
                             'url'  => 'sectors',
                     
                        ],
@@ -370,17 +394,43 @@ return [
                 [
                     'text' => 'Sede',
                     'icon' => 'fas fa-align-justify',
+                    'icon_color' => 'cyan',
                     'url'  => '#',
                     'submenu' => [
                        [
                             'text' => 'Crear Sede',
                             'icon' => 'fas fa-caret-right',
+                            'icon_color' => 'red',
                             'url'  => 'sedes/create',
+                            'can'  => 'sedes.create',
                        ],
                        [
                             'text' => 'Listado de Sedes',
                             'icon' => 'fas fa-caret-right',
+                            'icon_color' => 'red',
                             'url'  => 'sedes',
+                    
+                       ],
+                   ],
+                ],
+                 [
+                    'text' => 'Marca',
+                    'icon' => 'fas fa-align-justify',
+                    'icon_color' => 'cyan',
+                    'url'  => '#',
+                    'submenu' => [
+                       [
+                            'text' => 'Crear Marca',
+                            'icon' => 'fas fa-caret-right',
+                            'icon_color' => 'red',
+                            'url'  => 'marcas/create',
+                            'can'  => 'marcas.create',
+                       ],
+                       [
+                            'text' => 'Listado de Marcas',
+                            'icon' => 'fas fa-caret-right',
+                            'icon_color' => 'red',
+                            'url'  => 'marcas',
                     
                        ],
                    ],
@@ -388,6 +438,44 @@ return [
             ],
 
         ],
+        [
+            'text'        => 'Usuarios',
+            'url'         => 'users',
+            'icon'        => 'fas fa-users',
+            'label'       => 'DGHC',
+            'label_color' => 'success',
+            'can'         => 'users.index',
+            'submenu' => [
+                [
+                    'text' => 'Listado de Usuarios',
+                    'icon' => 'fas fa-align-justify',
+                    'icon_color' => 'cyan',
+                    'url'  => 'users',
+                ],
+            ],
+        ],
+        [
+                    'text' => 'Rol',
+                    'icon' => 'fas fa-users-cog',
+                    'icon_color' => 'cyan',
+                    'url'  => '#',
+                    'can'         => '#',
+                    'submenu' => [
+                       [
+                            'text' => 'Crear Rol',
+                            'icon' => 'fas fa-caret-right',
+                            'icon_color' => 'red',
+                            'url'  => 'roles.create',
+                       ],
+                       [
+                            'text' => 'Listado de Roles',
+                            'icon' => 'fas fa-caret-right',
+                            'icon_color' => 'red',
+                            'url'  => 'roles',
+                    
+                       ],
+                   ],
+                ],
         ['header' => 'Configuracion de la Cuenta'],
         [
             'text' => 'Perfil de Usuario',

@@ -12,6 +12,13 @@
     <div class="mb-3">
         <label for="" class="form-label">Nombre</label>
         <input id="nombre" name="nombre" type="text" class="form-control" tabindex="1">
+         @error('nombre')
+        <div class="alert alert-danger">
+        
+        <small>*{{$message}}</small>
+        
+        </div>
+        @enderror
     </div>
     <div class="mb-3">
         <label for="" class="form-label">Descripcion</label>

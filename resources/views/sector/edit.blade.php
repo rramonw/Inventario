@@ -1,3 +1,8 @@
+@extends('adminlte::page')
+
+@section('title', 'DGHC')
+
+
 @section('content_header')
     <h1>EDITAR SECTOR</h1>
 @stop
@@ -9,10 +14,17 @@
     <div class="mb-3">
         <label for="" class="form-label">Nombre</label>
         <input id="nombre" name="nombre" type="text" class="form-control" tabindex="1" value="{{$sector->nombre}}">
+         @error('nombre')
+        <div class="alert alert-danger">
+        
+        <small>*{{$message}}</small>
+        
+        </div>
+        @enderror
     </div>
     <div class="mb-3">
         <label for="" class="form-label">Descripcion</label>
-        <input id="descripcion" name="pc" type="text" class="form-control" tabindex="2" value="{{$sector->descripcion}}">
+        <input id="descripcion" name="descripcion" type="text" class="form-control" tabindex="2" value="{{$sector->descripcion}}">
     </div>
     <div class="mb-3">
         <label for="" class="form-label">Condicion</label>

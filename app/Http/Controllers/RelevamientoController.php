@@ -7,9 +7,17 @@ use App\Models\Relevamiento;
 
 class RelevamientoController extends Controller
 {
-    public function __construct(){
+     public function __construct(){
         $this->middleware('auth');
+        //$this->middleware('can:relevamientos.index')->only('index');
+        $this->middleware('can:relevamientos.create')->only('create', 'store');
+        $this->middleware('can:relevamientos.edit')->only('edit', 'update');
+        $this->middleware('can:relevamientos.destroy')->only('destroy');
     }
+
+    //public function __construct(){
+        //$this->middleware('auth');
+    //}
     /**
      * Display a listing of the resource.
      *
@@ -42,10 +50,11 @@ class RelevamientoController extends Controller
         $relevamientos = new Relevamiento();
         
         $relevamientos->ip = $request->get('ip');
-        $relevamientos->pc = $request->get('pc');
+        $relevamientos->equipo = $request->get('equipo');
         $relevamientos->num_serie = $request->get('num_serie');
         $relevamientos->sector = $request->get('sector');
         $relevamientos->usuario = $request->get('usuario');
+        $relevamientos->puesto = $request->get('puesto');
         $relevamientos->disponible = $request->get('disponible');
 
         $relevamientos->save();
@@ -88,10 +97,11 @@ class RelevamientoController extends Controller
         $relevamiento = Relevamiento::find($id);
 
         $relevamiento->ip = $request->get('ip');
-        $relevamiento->pc = $request->get('pc');
+        $relevamiento->equipo = $request->get('equipo');
         $relevamiento->num_serie = $request->get('num_serie');
         $relevamiento->sector = $request->get('sector');
         $relevamiento->usuario = $request->get('usuario');
+        $relevamientos->puesto = $request->get('puesto');
         $relevamiento->disponible = $request->get('disponible');
 
         $relevamiento->save();

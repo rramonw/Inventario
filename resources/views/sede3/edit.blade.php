@@ -15,8 +15,8 @@
         <input id="ip" name="ip" type="text" class="form-control" tabindex="1" value="{{$sede3->ip}}">
     </div>
     <div class="mb-3">
-        <label for="" class="form-label">PC</label>
-        <input id="pc" name="pc" type="text" class="form-control" tabindex="2" value="{{$sede3->pc}}">
+        <label for="" class="form-label">Equipo</label>
+        <input id="equipo" name="equipo" type="text" class="form-control" tabindex="2" value="{{$sede3->pc}}">
     </div>
     <div class="mb-3">
         <label for="" class="form-label">Num_Serie</label>
@@ -29,6 +29,10 @@
     <div class="mb-3">
         <label for="" class="form-label">Usuario</label>
         <input id="usuario" name="usuario" type="text" class="form-control" tabindex="5" value="{{$sede3->usuario}}">
+    </div>
+    <div class="mb-3">
+        <label for="" class="form-label">Puesto</label>
+        <input id="puesto" name="puesto" type="text" class="form-control" tabindex="5" value="{{$sede3->usuario}}">
     </div>
     <div class="mb-3">
         <label for="" class="form-label">Disponible</label>
