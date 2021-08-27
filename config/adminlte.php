@@ -325,20 +325,20 @@ return [
             'label_color' => 'success',
             'submenu' => [
                 [
-                    'text' => 'Articulo',
+                    'text' => 'Activos',
                     'icon' => 'fas fa-align-justify',
                     'icon_color' => 'cyan',
                     'url'  => '#',
                     'submenu' => [
                        [
-                            'text' => 'Crear Articulo',
+                            'text' => 'Crear Activo',
                             'icon' => 'fas fa-caret-right',
                             'icon_color' => 'red',
                             'url'  => 'articulos/create',
                             'can'  => 'articulos.create',
                        ],
                        [
-                            'text' => 'Listado de Articulos',
+                            'text' => 'Listado de Activos',
                             'icon' => 'fas fa-caret-right',
                             'icon_color' => 'red',
                             'url'  => 'articulos',

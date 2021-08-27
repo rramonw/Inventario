@@ -30,9 +30,17 @@ class Articulo extends Model
     }
     
     
-
     public function user(){
         return $this -> belongsTo('App\Models\User'); 
+    }
+
+
+    public function parent(){
+        return $this -> belongsTo('App\Models\articulos'); 
+    }
+
+    public function ariculos(){
+        return $this -> hasMany('App\Models\articulos', 'parent_id'); 
     }
 
 }

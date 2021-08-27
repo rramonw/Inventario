@@ -72,10 +72,16 @@ class SectorController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Sector $sector)
     {
-        //
+        //$categorias = Categoria::all();
+        //$sectors = Sector::all();
+        //$sedes = Sede::all();
+        //$marcas = Marca::all();
+        //$articulo = Articulo::find($id);
+        return view('sector.show', compact('sector'));
     }
+
 
     /**
      * Show the form for editing the specified resource.

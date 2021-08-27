@@ -29,6 +29,22 @@
         <label for="" class="form-label">Contraseña</label>
         <input id="password" name="password" type="password" class="form-control" tabindex="3">
     </div>
+    <div class="mb-3">
+        <label for="" class="form-label">Listado de Roles</label>
+    
+            @foreach ($roles as $role)
+            <div>
+                <label>
+                    <input type="checkbox" value="{{$role->id}}" name="roles[]">
+                    {{$role->name}}
+                </label>
+            </div>
+                
+            @endforeach
+
+        </select>
+        
+    </div>
     
     
     <a href="/users" class="btn btn-secondary" tabindex="4">Cancelar</a>

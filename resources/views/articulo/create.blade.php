@@ -92,9 +92,22 @@
         </div>
         @enderror
     </div>
+    
     <div class="mb-3">
         <label for="" class="form-label">Descripcion</label>
         <input id="descripcion" name="descripcion" type="text" class="form-control" tabindex="9">
+    </div>
+
+    <div class="mb-3">
+        <label for="" class="form-label">Pertenece a</label>
+        <input id="parent_id" name="parent_id" type="text" class="form-control" tabindex="7">
+        @error('parent_id')
+        <div class="alert alert-danger">
+        
+        <small>*{{$message}}</small>
+        
+        </div>
+        @enderror
     </div>
     <a href="/articulos" class="btn btn-secondary" tabindex="10">Cancelar</a>
     <button type="submit" class="btn btn-primary" tabindex="11">Guardar</button>

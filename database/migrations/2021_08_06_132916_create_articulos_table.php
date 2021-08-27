@@ -20,7 +20,7 @@ class CreateArticulosTable extends Migration
             $table->integer('sector_id')->unsigned();
             $table->integer('sede_id')->unsigned();
             $table->string('puesto', 70);
-            $table->string('ip', 70);
+            $table->string('ip', 70)->nullable();
             $table->integer('marca_id')->unsigned();
             $table->string('serial', 70);
             $table->string('estante', 70);

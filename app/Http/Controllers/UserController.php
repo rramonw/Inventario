@@ -39,7 +39,7 @@ class UserController extends Controller
     public function create()
     {
         $roles = Role::all();
-        return view('user.create')->with('roles',$roles);
+        return view('user.create', compact('roles'));
         //return view('user.create');
     }
 
@@ -79,9 +79,14 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(User $user)
     {
-        //
+        //$categorias = Categoria::all();
+        //$sectors = Sector::all();
+        //$sedes = Sede::all();
+        //$marcas = Marca::all();
+        //$articulo = Articulo::find($id);
+        return view('user.show', compact('user'));
     }
 
     /**

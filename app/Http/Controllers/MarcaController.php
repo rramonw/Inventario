@@ -66,9 +66,14 @@ class MarcaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Marca $marca)
     {
-        //
+        //$categorias = Categoria::all();
+        //$sectors = Sector::all();
+        //$sedes = Sede::all();
+        //$marcas = Marca::all();
+        //$articulo = Articulo::find($id);
+        return view('marca.show', compact('marca'));
     }
 
     /**

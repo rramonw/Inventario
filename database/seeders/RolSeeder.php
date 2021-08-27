@@ -25,41 +25,49 @@ class RolSeeder extends Seeder
         Permission::create(['name' => 'users.create'])->syncRoles([$role1]);
         Permission::create(['name' => 'users.edit'])->syncRoles([$role1]);
         Permission::create(['name' => 'users.destroy'])->syncRoles([$role1]);
+        Permission::create(['name' => 'users.show'])->syncRoles([$role1, $role2, $role3]);
 
         Permission::create(['name' => 'roles.index'])->syncRoles([$role1]);
         Permission::create(['name' => 'roles.create'])->syncRoles([$role1]);
         Permission::create(['name' => 'roles.edit'])->syncRoles([$role1]);
         Permission::create(['name' => 'roles.destroy'])->syncRoles([$role1]);
+        Permission::create(['name' => 'roles.show'])->syncRoles([$role1, $role2, $role3]);
 
         Permission::create(['name' => 'relevamientos.index'])->syncRoles([$role1]);
         Permission::create(['name' => 'relevamientos.create'])->syncRoles([$role1]);
         Permission::create(['name' => 'relevamientos.edit'])->syncRoles([$role1]);
         Permission::create(['name' => 'relevamientos.destroy'])->syncRoles([$role1]);
+        Permission::create(['name' => 'relevamientos.show'])->syncRoles([$role1, $role2, $role3]);
 
         Permission::create(['name' => 'categorias.index'])->syncRoles([$role1, $role2, $role3]);
         Permission::create(['name' => 'categorias.create'])->syncRoles([$role1, $role2]);
         Permission::create(['name' => 'categorias.edit'])->syncRoles([$role1, $role2]);
         Permission::create(['name' => 'categorias.destroy'])->syncRoles([$role1]);
+        Permission::create(['name' => 'categorias.show'])->syncRoles([$role1, $role2, $role3]);
 
         Permission::create(['name' => 'sectors.index'])->syncRoles([$role1, $role2, $role3]);
         Permission::create(['name' => 'sectors.create'])->syncRoles([$role1, $role2]);
         Permission::create(['name' => 'sectors.edit'])->syncRoles([$role1, $role2]);
         Permission::create(['name' => 'sectors.destroy'])->syncRoles([$role1]);
+        Permission::create(['name' => 'sectors.show'])->syncRoles([$role1, $role2, $role3]);
 
         Permission::create(['name' => 'sedes.index'])->syncRoles([$role1, $role2, $role3]);
         Permission::create(['name' => 'sedes.create'])->syncRoles([$role1, $role2]);
         Permission::create(['name' => 'sedes.edit'])->syncRoles([$role1, $role2]);
         Permission::create(['name' => 'sedes.destroy'])->syncRoles([$role1]);
+        Permission::create(['name' => 'sedes.show'])->syncRoles([$role1, $role2, $role3]);
 
         Permission::create(['name' => 'articulos.index'])->syncRoles([$role1, $role2, $role3]);
         Permission::create(['name' => 'articulos.create'])->syncRoles([$role1, $role2]);
         Permission::create(['name' => 'articulos.edit'])->syncRoles([$role1, $role2]);
         Permission::create(['name' => 'articulos.destroy'])->syncRoles([$role1]);
+        Permission::create(['name' => 'articulos.show'])->syncRoles([$role1, $role2, $role3]);
 
         Permission::create(['name' => 'marcas.index'])->syncRoles([$role1, $role2, $role3]);
         Permission::create(['name' => 'marcas.create'])->syncRoles([$role1, $role2]);
         Permission::create(['name' => 'marcas.edit'])->syncRoles([$role1, $role2]);
         Permission::create(['name' => 'marcas.destroy'])->syncRoles([$role1]);
+        Permission::create(['name' => 'marcas.show'])->syncRoles([$role1, $role2, $role3]);
 
 
     

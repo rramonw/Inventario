@@ -17,9 +17,8 @@
             <th scope="col">ID</th>
             <th scope="col">Nombre</th>
             <th scope="col">Correo</th>
-            <th scope="col">Contraseña</th>
-            <th scope="col">Creado por</th>
-            <th scope="col">Modificado por</th>
+            <th scope="col">Creado/Por</th>
+            <th scope="col">Modificado/Por</th>
             <th scope="col">Fec/Creacion</th>
             <th scope="col">Fec/Actualizacion</th>
             <th scope="col">Acciones</th>
@@ -31,7 +30,6 @@
             <td>{{$user->id}}</td>
             <td>{{$user->name}}</td>
             <td>{{$user->email}}</td>
-            <td>{{$user->password}}</td>
             <td>{{$user->created_by}}</td>
             <td>{{$user->updated_by}}</td> 
             <td>{{$user->created_at}}</td>
@@ -39,10 +37,17 @@
             
             <td>
                 <form action="{{route ('users.destroy', $user->id)}}" class="formulario-eliminar" method="POST">
-                   <a href="/users/{{$user->id}}/edit" class="btn btn-info">Editar</a>
+                  @can('users.show')
+                   <a href="{{route('users.show', $user->id)}}" class="btn btn-info"><i class="far fa-address-card"></i></a>
+                   @endcan
+                   @can('users.edit')
+                   <a href="/users/{{$user->id}}/edit" class="btn btn-primary" ><i class="far fa-edit"></i></a>
+                   @endcan
                    @csrf
                    @method('DELETE')
-                   <button type="submit" class="btn btn-danger">Borrar</button>
+                   @can('users.destroy')
+                   <button type="submit" class="btn btn-danger"><i class="far fa-trash-alt"></i></button>
+                   @endcan
                 </form>
             </td>
         </tr>
@@ -60,6 +65,9 @@
     <link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.7.1/css/buttons.dataTables.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
+    </-- Datatable responsive  -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/fixedheader/3.1.9/css/fixedHeader.bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/responsive/2.2.9/css/responsive.bootstrap.min.css">
 
 @stop
 
@@ -84,9 +92,16 @@
     <script src="https://cdn.jsdelivr.net/npm/datatables-buttons-excel-styles@1.1.5/js/buttons.html5.styles.templates.min.js">
     </script>
 
+    </-- Datatable responsive  -->
+    <script src="https://cdn.datatables.net/fixedheader/3.1.9/js/dataTables.fixedHeader.min.js" ></script>
+    <script src="https://cdn.datatables.net/responsive/2.2.9/js/dataTables.responsive.min.js"></script>
+    <script src="https://cdn.datatables.net/responsive/2.2.9/js/responsive.bootstrap.min.js"></script>
+
+
 <script>
     $(document).ready(function() {
-    $('#users').DataTable({
+    var table = $('#users').DataTable({
+        responsive: true,
         "lengthMenu": [[5,10, 50, -1], [5,10, 50, "All"]],
         dom: "lBfrtip",
             buttons:{
@@ -116,6 +131,7 @@
                 ]
             }
     });
+    new $.fn.dataTable.FixedHeader( table );
 } );
 </script>
 

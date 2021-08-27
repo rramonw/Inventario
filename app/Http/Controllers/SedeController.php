@@ -72,9 +72,14 @@ class SedeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Sede $sede)
     {
-        //
+        //$categorias = Categoria::all();
+        //$sectors = Sector::all();
+        //$sedes = Sede::all();
+        //$marcas = Marca::all();
+        //$articulo = Articulo::find($id);
+        return view('sede.show', compact('sede'));
     }
 
     /**

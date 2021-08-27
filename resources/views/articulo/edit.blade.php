@@ -97,6 +97,16 @@
         <label for="" class="form-label">Descripcion</label>
         <input id="descripcion" name="descripcion" type="text" class="form-control" tabindex="9" value="{{$articulo->descripcion}}">
     </div>
+    <div class="mb-3">
+        <label for="" class="form-label">Pertenece a</label>
+        <input id="parent_id" name="parent_id" type="text" class="form-control" tabindex="4" value="{{$articulo->parent_id}}">
+        @error('parent_id')
+        <div class="alert alert-danger">
+        
+        <small>*{{$message}}</small>
+        
+        </div>
+        @enderror
     <a href="/articulos" class="btn btn-secondary" tabindex="10">Cancelar</a>
     <button type="submit" class="btn btn-primary" tabindex="11">Guardar</button>
     

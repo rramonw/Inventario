@@ -16,6 +16,7 @@ class ArticuloController extends Controller
         $this->middleware('can:articulos.index')->only('index');
         $this->middleware('can:articulos.create')->only('create');
         $this->middleware('can:articulos.edit')->only('edit, update');
+        //$this->middleware('can:articulos.show')->only('show');
         $this->middleware('can:articulos.destroy')->only('destroy');
 
     }
@@ -31,10 +32,10 @@ class ArticuloController extends Controller
     }
     public function listado()
 
-{
+    {
     $articulos = Articulo::all();
       return view('articulos.listado')->with('articulos', $articulos);
-}
+    }
     /**
      * Show the form for creating a new resource.
      *
@@ -68,10 +69,10 @@ class ArticuloController extends Controller
     {
         $request->validate([
             
-             'ip'=>'unique:articulos',
-            'puesto'=>'required:articulos',
-            'serial'=>'required|unique:articulos',
-            'estante'=>'required|unique:articulos',
+             'ip'=>'unique|nullable:articulos',
+            //'puesto'=>'required:articulos',
+            'serial'=>'unique|nullable:articulos',
+            'estante'=>'unique|nullable:articulos',
 
             
 
@@ -89,6 +90,7 @@ class ArticuloController extends Controller
         $articulos->serial = $request->get('serial');
         $articulos->estante = $request->get('estante');
         $articulos->descripcion = $request->get('descripcion');
+        $articulos->parent_id = $request->get('parent_id');
 
 
         $articulos->save();
@@ -102,12 +104,20 @@ class ArticuloController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Articulo $articulo)
     {
-        //
+        //dd($articulo);
+        //$categorias = Categoria::all();
+        //$sectors = Sector::all();
+        //$sedes = Sede::all();
+        //$marcas = Marca::all();
+        //$parent_id = Articulo::all();
+        //$articulo = Articulo::find($id);
+        $articulosAsociados = Articulo::where("parent_id",$articulo->id)->get();
+        return view('articulo.show', compact('articulo', 'articulosAsociados'));
     }
 
-    /**
+    /**sw
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
@@ -132,16 +142,16 @@ class ArticuloController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $request->validate([
+       // $request->validate([
             
-             'ip'=>'required:articulos',
-            'puesto'=>'required:articulos',
-            'serial'=>'required:articulos',
-            'estante'=>'required:articulos',
+             
+           // 'puesto'=>'required:articulos',
+           // 'serial'=>'required:articulos',
+            //'estante'=>'required:articulos',
 
             
 
-        ]);
+        //]);
 
         $articulo = Articulo::find($id);
 
@@ -154,6 +164,7 @@ class ArticuloController extends Controller
         $articulo->serial = $request->get('serial');
         $articulo->estante = $request->get('estante');
         $articulo->descripcion = $request->get('descripcion');
+        $articulos->parent_id = $request->get('parent_id');
 
 
         $articulo->save();

@@ -1,4 +1,4 @@
-<?php
+.<?php
 
 use Illuminate\Support\Facades\Route;
 
@@ -27,6 +27,10 @@ Route::resource('sedes','App\Http\Controllers\SedeController');
 Route::resource('users','App\Http\Controllers\UserController');
 Route::resource('marcas','App\Http\Controllers\MarcaController');
 Route::resource('roles','App\Http\Controllers\RoleController');
+
+
+
+
 
 
 

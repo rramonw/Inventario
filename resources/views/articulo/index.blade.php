@@ -3,7 +3,7 @@
 @section('title', 'DGHC')
 
 @section('content_header')
-    <h1>LISTADO DE ARTICULOS</h1>
+    <h1>LISTADO DE ACTIVOS</h1>
 @stop
 
 @section('content')
@@ -19,15 +19,10 @@
             <th scope="col">Sector</th>
             <th scope="col">Sede</th>
             <th scope="col">Puesto</th>
-            <th scope="col">IP</th>
             <th scope="col">Marca/Modelo</th>
             <th scope="col">Serial</th>
             <th scope="col">Estante</th>
-            <th scope="col">Descripcion</th>
-            <th scope="col">Creado por</th>
-            <th scope="col">Modificado por</th>
-            <th scope="col">Fec/Creacion</th>
-            <th scope="col">Fec/Actualizacion</th>
+            <th scope="col">Pertenece a</th>
             <th scope="col">Acciones</th>
         </tr>
     </thead>
@@ -40,25 +35,24 @@
             <td>{{$articulo->sector->nombre}}</td>
             <td>{{$articulo->sede->nombre}}</td>
             <td>{{$articulo->puesto}}</td>
-            <td>{{$articulo->ip}}</td>
             <td>{{$articulo->marca->nombre}}</td>
             <td>{{$articulo->serial}}</td>
             <td>{{$articulo->estante}}</td>
-            <td>{{$articulo->descripcion}}</td> 
-            <td>{{$articulo->created_by}}</td>
-            <td>{{$articulo->updated_by}}</td> 
-            <td>{{$articulo->created_at}}</td>
-            <td>{{$articulo->updated_at}}</td>
+            <td>{{$articulo->parent_id}}</td>
 
             <td>
+               
                 <form action="{{route ('articulos.destroy', $articulo->id)}}" class="formulario-eliminar" method="POST">
-                 @can('articulos.edit')
-                   <a href="/articulos/{{$articulo->id}}/edit" class="btn btn-info">Editar</a>
+                   @can('articulos.show')
+                   <a href="{{route('articulos.show', $articulo->id)}}" class="btn btn-info"><i class="fas fa-info-circle"></i></a>
+                   @endcan
+                   @can('articulos.edit')
+                   <a href="/articulos/{{$articulo->id}}/edit" class="btn btn-primary" ><i class="far fa-edit"></i></a>
                    @endcan
                    @csrf
                    @method('DELETE')
                    @can('articulos.destroy')
-                   <button type="submit" class="btn btn-danger">Borrar</button>
+                   <button type="submit" class="btn btn-danger"><i class="far fa-trash-alt"></i></button>
                    @endcan
 
 
@@ -75,9 +69,17 @@
 @section('css')
     <link rel="stylesheet" href="/css/admin_custom.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    
+    </-- Datatable -->
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.25/css/dataTables.bootstrap5.min.css">
+
+    </-- Botones -->
     <link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.7.1/css/buttons.dataTables.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" /> 
+
+    </-- Datatable responsive  -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/fixedheader/3.1.9/css/fixedHeader.bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/responsive/2.2.9/css/responsive.bootstrap.min.css">
 
 @stop
 
@@ -85,6 +87,10 @@
 @section('js')
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
+
+
+    </-- Datatable -->
     <script src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.25/js/dataTables.bootstrap5.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" integrity="sha512-RXf+QSDCUQs5uwRKaDoXt55jygZZm2V++WUZduaU/Ui/9EGp3f/2KZVahFZBKGH0s774sd3HmrhUy+SgOFQLVQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
@@ -103,10 +109,16 @@
     <script src="https://cdn.jsdelivr.net/npm/datatables-buttons-excel-styles@1.1.5/js/buttons.html5.styles.templates.min.js">
     </script>
 
+    </-- Datatable responsive  -->
+    <script src="https://cdn.datatables.net/fixedheader/3.1.9/js/dataTables.fixedHeader.min.js" ></script>
+    <script src="https://cdn.datatables.net/responsive/2.2.9/js/dataTables.responsive.min.js"></script>
+    <script src="https://cdn.datatables.net/responsive/2.2.9/js/responsive.bootstrap.min.js"></script>
+
 
 <script>
     $(document).ready(function() {
-    $('#articulos').DataTable({
+    var table = $('#articulos').DataTable({
+        responsive: true,
         "lengthMenu": [[5,10, 50, -1], [5,10, 50, "All"]],
             dom: "lBfrtip",
             buttons:{
@@ -138,6 +150,7 @@
 
 
     });
+     new $.fn.dataTable.FixedHeader( table );
 });
 </script>
 
