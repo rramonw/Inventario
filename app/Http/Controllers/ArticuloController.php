@@ -66,13 +66,12 @@ class ArticuloController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
+    { 
         $request->validate([
             
-             'ip'=>'unique|nullable:articulos',
-            //'puesto'=>'required:articulos',
-            'serial'=>'unique|nullable:articulos',
-            'estante'=>'unique|nullable:articulos',
+             'ip'=>'unique:articulos,ip|nullable:articulos',
+            'serial'=>'unique:articulos,serial|nullable:articulos',
+            'estante'=>'unique:articulos,estante|nullable:articulos',
 
             
 
